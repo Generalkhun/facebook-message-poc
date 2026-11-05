@@ -33,6 +33,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    console.log("🚀 ~ POST ~ body:", body)
 
     if (body.object === 'page') {
       for (const entry of body.entry) {
@@ -53,6 +54,7 @@ export async function POST(req: NextRequest) {
             message_text: messageText,
             created_at: new Date().toISOString(),
           });
+          console.log("🚀 ~ POST ~ globalMessages:", globalMessages)
         }
       }
       return NextResponse.json({ status: 'EVENT_RECEIVED' }, { status: 200 });
